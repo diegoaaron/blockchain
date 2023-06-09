@@ -12,25 +12,35 @@ contract TareaSemana3 {
         owner = msg.sender;
     }
 
+    function getGreeting() public view returns(string memory) {
+        return greeting;
+    }
+
+    function getOwner() public view returns(address) {
+        return owner;
+    }
+
     modifier ValidaOwner {
         require(owner == msg.sender, "No eres el owner de SC");
         _;
     }
 
     modifier ValidaDireccion(address _owner) {
-        require(_owner != address(0), "ERC20: transfer from the zero address");
+        require(_owner != address(0), "No se puede utilizar un direccion vacia");
         _;
     }
 
+    event infoChangeGreeting(address direccion, string oldGreeting, string newGreeting);
+
     function setGreeting(string memory _greeting) external ValidaOwner ValidaDireccion(msg.sender) {
+        emit infoChangeGreeting(owner, greeting, _greeting);
         greeting = _greeting;
     }
 
-    function changeOwner(address _owner) external ValidaOwner{
+    event infoChangeOwner(address oldOwner, address newOwner);
+
+    function setOwner(address _owner) external ValidaOwner ValidaDireccion(msg.sender) {
+        emit infoChangeOwner(owner, _owner);
         owner = _owner;
     }
-
-
-
 }
-

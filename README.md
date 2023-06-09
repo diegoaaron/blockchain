@@ -17,3 +17,5 @@ dirección del SC Register.sol al desplegar en Sepolia: 0x1728a0efd51197069cd0cb
 
 dirección del SC Register2.sol al desplegar en Sepolia: 0x339c95ca0d8a808129007bbe5b97d548509383f5
 
+dirección del SC TareaSemana3.sol al desplegar en Sepolia: 0x9490DB385Cd2aE1Acd05995A0A1f8Ec1ACfc043A
+
