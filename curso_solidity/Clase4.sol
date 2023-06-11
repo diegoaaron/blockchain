@@ -151,7 +151,7 @@ contract Register2 {
     // infos: ["string1", "string2", "string3", "string4", ...]
     // Recuperar informacion desde un ixA hasta in ixB
 
-    function recuperarInfo(uint256 ixStart, uint256 ixEnd) public view returns(string[] memory){
+    function recuperarInfo(uint256 ixStart, uint256 ixEnd) public view returns(string[] memory lsd){
         require(ixEnd > ixStart);
         require(ixEnd < infos.length);
 
