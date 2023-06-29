@@ -96,5 +96,34 @@ contract Register11 {
         _;
     }
 
+    function setInfo(string memory _info) external onlyWhitelist {
+        emit InfoChange(msg.sender, infos[msg.sender], _info);
+        infos[msg.sender] = _info;
+        countChanges[msg.sender]++;
+    }
 
+    function guardarEnWhitelist(address _whitelistMember) public onlyOwner {
+        _whitelist[_whitelistMember] = true;
+    }
+
+    function removerDeWhitelist(address _whitelistMember) public onlyOwner {
+        _whitelist[_whitelistMember] = false;
+    }
+
+    function modificarWhitelist(address _member, bool _acceso) public onlyOwner {
+        _whitelist[_member] = _acceso;
+    }
+
+    function setInfoArray(address _account, string memory _cadena) public {
+        infoArray[_account].push(_cadena);
+        countChanges[msg.sender]++;
+    }
+
+    function leerInfoArray(address _account) public view returns (string[] memory) {
+        return infoArray[_account];
+    }
+
+    function leerTuInfo() public view returns (string[] memory) {
+        return infoArray[msg.sender];
+    }
 }
