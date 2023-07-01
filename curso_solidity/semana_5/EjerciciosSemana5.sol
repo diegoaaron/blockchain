@@ -75,10 +75,36 @@ contract EjercicioSemana5 {
     error OfertaInvalida();
     error SubastaEnMarcha();
 
+    mapping (address _creador => bytes32) subastas;
+    bytes32[] subastas_activas; 
+
+/**
+ * - El método 'creaSubasta(uint256 _startTime, uint256 _endTime)':
+ *      * Crea un ID único del typo bytes32 para la subasta y lo guarda en la lista de subastas activas
+ *      * Permite a cualquier usuario crear una subasta pagando 1 Ether
+ *          - Error en caso el usuario no envíe 1 Ether: CantidadIncorrectaEth();
+ *      * Verifica que el tiempo de finalización sea mayor al tiempo de inicio
+ *          - Error en caso el tiempo de finalización sea mayo al tiempo de inicio: TiempoInvalido();
+ *      * Disparar un evento llamado 'SubastaCreada' con el ID de la subasta y el creador de la subasta (address)
+ */
+
     function creaSubasta(uint256 _startTime, uint256 _endTime) public payable {
+        
+        
+        if (_startTime >= _endTime) {
+            revert TiempoInvalido();
+        }
+
+        if (msg.value <= 0.1 ether) {
+            revert CantidadIncorrectaEth();
+        }
+
+
         bytes32 _auctionId = _createId(_startTime, _endTime);
 
-        // emit SubastaCreada(_auctionId, msg.sender);
+        subastas_activas.push(_auctionId);
+
+        emit SubastaCreada(_auctionId, msg.sender);
     }
 
     function proponerOferta(bytes32 _auctionId) public payable {
@@ -93,7 +119,11 @@ contract EjercicioSemana5 {
         // payable(msg.sender).transfer(amount);
     }
 
-    function verSubastasActivas() public view returns (bytes32[] memory) {}
+    function verSubastasActivas() public view returns (bytes32[] memory) {
+        for (uint256 i = 0; i <= subastas_activas.length ; i++){
+
+        }
+    }
 
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////   INTERNAL METHODS  ///////////////////////////////
