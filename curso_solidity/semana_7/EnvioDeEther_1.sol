@@ -4,5 +4,41 @@ pragma solidity 0.8.18;
 
 // tries
 
-// DOs maneras de enviar Ether (forzosa)
+// Dos maneras de enviar Ether (forzosa)
+// 1 - usando selfdestruct
+// * destruye un SC y envia el ether que tenia ese contrato a un address
+// 2 - validando
+// especificas un address para que reciba el premio (pago)
 
+contract Ether {
+    uint256 public balanceEther;
+
+    event Receive();
+    event Fallback();
+
+    constructor() payable {}
+
+    function getBalance() public view returns (uint256) {
+        // this: este contrato
+        // address(this): address del contrato
+        // .balance: balance de Ether del address
+        return address(this).balance;
+    }
+
+    // msg.value
+    // la cantidad de Ether que se esta enviando
+    receive() external payable {
+        balanceEther += msg.value;
+        emit Receive();
+    }
+
+    fallback() external payable {
+        emit Fallback();
+    }
+
+    mapping (address => uint256) public _balancesEther;
+
+    function guardarBalanceEther (address _account) public payable {
+        _balancesEther[_account] += msg.value;
+    }
+}
