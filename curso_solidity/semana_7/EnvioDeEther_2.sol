@@ -28,6 +28,34 @@ contract EnviaEther {
         // con transfer, si la transferencia falla, el error se lanza y se interrumple la ejecución del método
         // no hay forma de controlar el error 
 
-        
+        // El presupuesto de gas  a gastar es 2300
+        // lo cual alcanza para:
+        // - lanzar un evento
+        // - actualizar una variable
+    }
+
+    function withDrawEtherSend(address _account) public {
+        uint256 balanceContrato = address(this).balance;
+        bool success = payable(_account).send(balanceContrato);
+        // success: indica si la transferencia fue exitosa 
+        // si no fue exitosa success = false;
+        // si fue exitosa success = true;
+        // con send, si la transferencia falla no se interrumpe el método
+        // Puedes continuar con otra lógica si falla la transferencia
+        // El presupuesto de gas a gastar es 2300
+        require(success, "La transferencia fallo");
+    }
+
+    // Puedes manejar la cantidad de gas a gastar en el contrato donde se ejecuta "receive/fallback"
+    function withDrawEtherCall(address _account) public {
+        uint256 balanceContrato = address(this).balance;
+        (bool success,) = payable(_account).call{
+            value: balanceContrato,
+            gas: 500000
+        }(abi.encodeWithSignature("metodoRecibeEther"));
+        require(success, "La transferencia fallo");
     }
 }
+
+// 0x406AB5033423Dcb6391Ac9eEEad73294FA82Cfbc
+
