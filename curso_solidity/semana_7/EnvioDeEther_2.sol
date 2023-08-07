@@ -58,4 +58,22 @@ contract EnviaEther {
 }
 
 // 0x406AB5033423Dcb6391Ac9eEEad73294FA82Cfbc
+contract RecibeEther {
+    function consumirGas() public pure {
+        uint256 a = 123;
+        for (uint256 i; i < 10; i++) {
+            a += a;
+        }
+    }
 
+    function metodoRecibeEther() public payable {
+        // otras operaciones
+    }
+
+    receive() external payable {
+        consumirGas();
+        // EnviaEther(0xd7Ca4e99F7C171B9ea2De80d3363c47009afaC5F).metodoDeEnviaEther();
+    }
+
+    fallback() external payable {}
+}
