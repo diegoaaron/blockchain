@@ -1,11 +1,19 @@
-# blockchain
+# Blockchain
 
-Material revisado para aprender solidity
+### 📝 Descripción
 
-### Curso Solidiy
+Documentación y cursos sobre la blockchain de Ethereum o derivados
 
-Curso de Ethereum Lima sobre introducción a los contratos inteligentes 
+### 📒 Curso Blockchain Bites & Ethereum Lima
 
-### Curso Criptozombies
+Curso sobre introducción a los contratos inteligentes con Solidity
 
-Resumenes sobre los tutoriales de criptozombies sobre Smart Contracts
+### 📒 Curso Criptozombies
+
+Resumenes de los tutoriales de criptozombies sobre Smart Contracts
+
+### ⚙️ Referencias
+
+Información de referencia para los ejercicios.
+
+* [tutorial de programacion YA](https://www.tutorialesprogramacionya.com/oracleya/)
