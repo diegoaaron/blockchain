@@ -2,18 +2,15 @@
 
 ### 📝 Descripción
 
-Documentación y cursos sobre la blockchain de Ethereum o derivados
+Resumen de cursos y aplicaciones y cursos sobre la blockchain de Ethereum o derivados
 
-### 📒 Curso Blockchain Bites & Ethereum Lima
+### 📒 Contenido
 
-Curso sobre introducción a los contratos inteligentes con Solidity
-
-### 📒 Curso Criptozombies
-
-Resumenes de los tutoriales de criptozombies sobre Smart Contracts
+- [x] [Curso Blockchain Bites & Ethereum Lima](freecode_api/README.md)
+- [ ] [Curso Criptozombies](node_basic/README.md)
 
 ### ⚙️ Referencias
 
-Información de referencia para los ejercicios.
+Información de referencia.
 
-* [tutorial de programacion YA](https://www.tutorialesprogramacionya.com/oracleya/)
+- [Web Criptozombies](https://cryptozombies.io/)
