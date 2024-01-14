@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
+pragma solidity 0.8.19;
 
 // El nombre del archivo no tiene que coincidir con el nombre del contrato
 // ES buena práctica hacer que coincida (legibilidad)
